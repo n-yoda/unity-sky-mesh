@@ -1,6 +1,8 @@
-# SkyMesh (sky-sphere) for Unity
+# SkyMesh shader for Unity
 Do you want to use your own **sky sphere model** made in 3D modeling software (e.g. Blender, Maya)?
-In that case, the SkyMesh shader in this repository will be more **useful and efficient** than built-in shaders.
+In that case, the SkyMesh shader in this repository will be **useful and efficient**.
+
+![screenshot.png](screenshot.png)
 
 ## How to use?
 ### 0. Think twice if you really need to render sky with your mesh.
@@ -21,8 +23,7 @@ If you prefer this behaviour, **uncheck Finite Radius checkbox** of your materia
 If your camera mode is orthographic or you prefer camera-translation-dependent sky,
 **check Finite Radius checkbox**.
 
-In both cases, the sky mesh **doesn't need to be within the view volume**.
-The mesh is rendered as if it is stuck on the far plane of the volume.
+In both cases, the sky mesh **doesn't need to be within the view volume** (read below).
 
 ### 3. Choose renderer. MeshRenderer or CommandBuffer?
 #### CommandBuffer
@@ -33,4 +34,14 @@ Create GameObject, and attach MeshFilter with your mesh and MeshRenderer with th
 In order to avoid frustum culling, you have to scale the object or
 [Mesh.bounds](http://docs.unity3d.com/ScriptReference/Mesh-bounds.html).
 
-## How it works? Why good?
+## Features
+### No need to be bothered with camera view volume (clipping planes).
+Sky meshes will be rendered even if the actual meshes are outside camera view volumes.
+The mesh is rendered as if it is stuck on the far plane of the volume.
+It doesn't cosume your depth buffer bits.
+
+### Efficient rendering order.
+The rendering order is as efficient as builtin Skybox.
+The areas hidden by opaque objects are culled by depth test.
+
+![render.png](render.png)
