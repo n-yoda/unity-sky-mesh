@@ -4,7 +4,7 @@
 	{
 		_MainTex ("Texture", 2D) = "white" {}
 		[Enum(CullMode)] _CullMode ("Cull Mode", float) = 1
-        [Toggle] _Finite ("Finite Radius", float) = 0
+		[Toggle] _Finite ("Finite Radius", float) = 0
 	}
 	SubShader
 	{
@@ -14,7 +14,7 @@
 		Pass
 		{
 			CGPROGRAM
-            #pragma multi_compile _FINITE_OFF _FINITE_ON
+			#pragma multi_compile _FINITE_OFF _FINITE_ON
 			#pragma vertex vert
 			#pragma fragment frag
 			#include "UnityCG.cginc"
@@ -37,11 +37,11 @@
 			v2f vert (appdata v)
 			{
 				v2f o;
-                #if _FINITE_ON
-                    o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
-                #else
-                    o.vertex = mul(UNITY_MATRIX_MVP, float4(v.vertex.xyz, 0));
-                #endif
+				#if _FINITE_ON
+				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				#else
+				o.vertex = mul(UNITY_MATRIX_MVP, float4(v.vertex.xyz, 0));
+				#endif
 				o.vertex.z = o.vertex.w;
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 				return o;
