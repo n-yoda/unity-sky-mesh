@@ -6,7 +6,8 @@ In that case, the SkyMesh shader in this repository will be **useful and efficie
 
 ## How to use?
 ### 0. Think twice if you really need to render sky with your mesh.
-In many cases, you should use [Skybox](http://docs.unity3d.com/Manual/class-Skybox.html) instead.
+In many cases, you should use [Skybox](http://docs.unity3d.com/Manual/class-Skybox.html) instead,
+because **SkyMesh is not suitable for GI**.
 Unity can import several types of textures as [Cubemaps](http://docs.unity3d.com/Manual/class-Cubemap.html).
 Even if you don't want to use Cubemaps, **you'd better write your custom Skybox shader** if the mapping between view direction and color (or texture coordinates) is simple enough.
 
