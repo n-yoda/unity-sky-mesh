@@ -26,7 +26,7 @@ If your camera mode is orthographic or you prefer camera-translation-dependent s
 
 In both cases, the sky mesh **doesn't need to be within the view volume** (read below).
 
-### 3. Choose renderer. MeshRenderer or CommandBuffer?
+### 3. Choose a renderer. MeshRenderer or CommandBuffer?
 #### CommandBuffer
 Attatch SkyMesh script to your main camera, and fill all the properties.
 "Camera Event" is recommended to be "After Image Effects Opaque" for efficiency.
@@ -36,7 +36,7 @@ In order to avoid frustum culling, you have to scale the object or
 [Mesh.bounds](http://docs.unity3d.com/ScriptReference/Mesh-bounds.html).
 
 ## Features
-### No need to be bothered with camera view volume (clipping planes).
+### The sky is rendered even if far away from the camera.
 Sky meshes will be rendered even if the actual meshes are outside camera view volumes.
 The mesh is rendered as if it is stuck on the far plane of the volume.
 It doesn't cosume your depth buffer bits.
